@@ -1,0 +1,9 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+
+# packages in environment at /home/mdoyle/anaconda3/envs/instance-manager:
+#
+# Name                    Version                   Build  Channel
+google-auth               1.5.1                      py_0    conda-forge
+python                    3.6.6                h5001a0f_0    conda-forge
