@@ -1,11 +1,12 @@
 import pprint # TEMPORARY: FORMATTING FOR BUILDING RETURNS
-from gce_api_calls import GceInstApi
+from gce_api_calls import InstanceManagement
 
 class InstDetailReq(object):
     def __init__(self, project, zone, instance):
         ## Creates object to retreive instance details
-        inst_call = GceInstApi(project, zone, instance)
+        inst_call = InstanceManagement(project, zone, instance)
 
+        ## Pulls the 'items' key from the list request
         self.req = inst_call.get_inst_details()
 
         ########################################

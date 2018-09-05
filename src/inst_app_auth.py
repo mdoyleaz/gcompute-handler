@@ -3,7 +3,7 @@ from google.auth import compute_engine
 
 META_URL = 'http://metadata.google.internal/computeMetadata/v1/'
 META_HEADERS = {'Metadata-Flavor': 'Google'}
-SERVICE_ACCOUNT = 'default'
+SERVICE_ACCOUNT = 'default'dfdf
 
 def receive_token():
     url = '{}instance/service-accounts/{}/token'.format(

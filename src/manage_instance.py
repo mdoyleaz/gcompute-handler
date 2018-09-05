@@ -1,13 +1,13 @@
-from gce_api_calls import GceInstApi
+from gce_api_calls import InstanceManagement
 
-class InstManagement(object):
+class InstManagement(InstanceManagement):
     def __init__(self, project, zone, instance):
-        self.inst_call = GceInstApi(project, zone, instance)
+        self.inst_call = InstanceManagement(project, zone, instance)
         self.project = project
         self.zone = zone
         self.instance = instance
 
-    def inst_power_control(self, power_option):
+    def inst_power(self, power_option):
         """
         Instance power management controls.
         The following options are supported:
@@ -17,10 +17,12 @@ class InstManagement(object):
         """
         options = ['start', 'stop', 'reset']
 
+        # Prevents unwanted method calls
         if power_option not in options:
             return f"Invalid Power Option, please use one of the follwing:\n{options}"
 
-        req = self.inst_call.put_inst_power(power_option)
+        # Builds method call based on the selected option
+        req = getattr(self.inst_call, f'{power_option}_instance')()
 
         return f"POWER STATUS: {power_option.upper()} {req['status']}"
 
@@ -29,4 +31,4 @@ class InstManagement(object):
 if __name__ == '__main__':
     inst = InstManagement('gcp-creator', 'us-central1-a', 'instance-1')
 
-    print(inst.inst_power_control('stop'))
+    print(inst.inst_power('stop'))
