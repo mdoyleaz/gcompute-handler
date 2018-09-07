@@ -29,6 +29,7 @@ class InstManagement(InstanceManagement):
 
 ### TESTING ###
 if __name__ == '__main__':
-    inst = InstManagement('gcp-creator', 'us-central1-a', 'instance-1')
-
-    print(inst.inst_power('stop'))
+    instance = input("Enter Instance: ")
+    inst = InstManagement('gcp-creator', 'us-central1-a', instance)
+    power = input("Enter power option: ")
+    print(inst.inst_power(power))
